@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Form } from 'react-bootstrap';
 import { useLoaderData, useParams } from 'react-router-dom';
-
+import { addToDb } from '../../utilities/fakedb';
 import Modal from 'react-bootstrap/Modal';
 
 const ShowSummary = () => {
@@ -26,7 +26,11 @@ const ShowSummary = () => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-   
+    const onClick=()=>{ 
+        addToDb(detail?.show?.name);
+        handleClose()
+
+    }
 
     return (
      <div>
@@ -57,7 +61,7 @@ const ShowSummary = () => {
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Movie Name : </Form.Label>
-              <Form.Control
+              <Form.Control readOnly
               value={detail?.show?.name}
                 
                 autoFocus
@@ -66,7 +70,7 @@ const ShowSummary = () => {
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Movie Language : 
 </Form.Label>
-              <Form.Control
+              <Form.Control readOnly
               value={detail?.show?.language
               }
                 
@@ -77,7 +81,7 @@ const ShowSummary = () => {
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Rating : 
 </Form.Label>
-              <Form.Control
+              <Form.Control readOnly
               value={detail?.show?.rating.average
               }
                 
@@ -86,7 +90,7 @@ const ShowSummary = () => {
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Average Runtime : </Form.Label>
-              <Form.Control
+              <Form.Control readOnly
               value={detail?.show?.averageRuntime}
                 
                 autoFocus
@@ -95,7 +99,7 @@ const ShowSummary = () => {
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Official Site : 
 </Form.Label>
-              <Form.Control
+              <Form.Control readOnly
               value={detail?.show?.officialSite
               }
                 
@@ -108,7 +112,7 @@ const ShowSummary = () => {
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          <Button  variant="primary">Book Now</Button>
+          <Button onClick={onClick} variant="primary">Book Now</Button>
         </Modal.Footer>
       </Modal>
          </div>
