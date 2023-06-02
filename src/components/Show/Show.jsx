@@ -3,14 +3,14 @@ import { Button, Card, Container,} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const Show = ({details}) => {
-    console.log(details.show)
+    
      const show =details.show;
-     console.log(show);
+     
      const {image,name,id,language,premiered}=show;
     return (
-        <div className='gap-3 mx-lg-auto'>
+        <div className='gap-3 mx-lg-auto mx-md-auto'>
            
-           <Card className='lg:mx-auto mb-lg-2' >
+           <Card className='mx-lg-auto mb-2' >
                 <Card.Img  variant="top" src={image.original} style={{ height: '350px' }} />
                 <Card.Body>
                     <Card.Title>Movie Name : {name}</Card.Title>
